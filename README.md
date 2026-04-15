@@ -1,6 +1,14 @@
-# Karpathy Wiki Protocol — Agent-Optimized Rules for LLM-Maintained Knowledge Bases
+# Karpathy Wiki Protocol — Claude Code / Codex / Cursor Skill for LLM-Maintained Knowledge Bases
 
 > **The only Karpathy wiki implementation born from a production codebase (139 pages, 594 wikilinks, 425 audited gaps), not a weekend experiment.**
+
+---
+
+**Skill for:** Claude Code | Codex | Cursor | Any AI Agent with filesystem access
+
+**Category:** AI Agents | LLM Prompt Engineering | Knowledge Management | Wiki Maintenance
+
+---
 
 Most Karpathy wiki implementations are demos. They ingest 5 articles, generate pretty pages, and stop.
 
@@ -10,24 +18,24 @@ This repo is different. It's the **operational ruleset** — extracted from a re
 
 ## What This Is
 
-A complete, copy-paste-ready protocol for making LLM agents (Claude Code, Codex, Cursor, any agent with filesystem access) build and maintain a Karpathy-style wiki. It's not a tool. It's not a CLI. It's a **set of rules** you drop into your `CLAUDE.md` or `AGENTS.md` and your agent immediately knows how to maintain your knowledge base.
+A complete, copy-paste-ready **AI agent skill** for making LLM agents (Claude Code, Codex, Cursor, any agent with filesystem access) build and maintain a **Karpathy-style wiki**. It's not a tool. It's not a CLI. It's a **set of battle-tested rules** you drop into your `CLAUDE.md`, `AGENTS.md`, or `.claude/` directory and your agent immediately knows how to maintain your knowledge base.
 
 ## What This Is NOT
 
-- Not a RAG pipeline
-- Not an Obsidian plugin  
-- Not a CLI tool
-- Not a SaaS product
+- ❌ Not a RAG pipeline
+- ❌ Not an Obsidian plugin  
+- ❌ Not a CLI tool
+- ❌ Not a SaaS product
 
-It's a prompt. A very battle-tested one.
+It's a **prompt/skill**. A very battle-tested one.
 
 ---
 
 ## The Problem It Solves
 
-Every new AI agent session on your codebase starts from zero. It re-reads your docs, re-derives relationships, re-discovers gaps. Thousands of tokens burned on initialization, every single time. Knowledge doesn't accumulate.
+Every new AI agent session on your codebase starts from zero. It re-reads your docs, re-derives relationships, re-discovers gaps. **Thousands of tokens burned on initialization, every single time.** Knowledge doesn't accumulate.
 
-The Karpathy wiki pattern fixes this: a **compiled knowledge layer** (markdown files in `wiki/`) that agents read FIRST instead of your raw docs. But the pattern only works if the wiki stays maintained. That's where every implementation fails — the wiki rots because nobody defined the maintenance rules.
+The Karpathy wiki pattern fixes this: a **compiled knowledge layer** (markdown files in `wiki/`) that agents read FIRST instead of your raw docs. But the pattern only works if the wiki stays maintained. **That's where every implementation fails** — the wiki rots because nobody defined the maintenance rules.
 
 This repo defines those rules.
 
@@ -38,15 +46,12 @@ This repo defines those rules.
 ### Option A: Drop the Full Protocol Into Your Project
 
 ```bash
-# Copy the protocol file to your project root
-curl -O https://raw.githubusercontent.com/{YOUR_USERNAME}/karpathy-wiki-protocol/main/WIKI_PROTOCOL.md
-
-# Or clone and copy
-git clone https://github.com/{YOUR_USERNAME}/karpathy-wiki-protocol.git
+# Clone and copy the protocol
+git clone https://github.com/Alirezajalilii/karpathy-wiki-protocol.git
 cp karpathy-wiki-protocol/WIKI_PROTOCOL.md your-project/docs/
 ```
 
-Then reference it from your `CLAUDE.md`:
+Then reference it from your `CLAUDE.md` or `AGENTS.md`:
 ```markdown
 ## Wiki Rules
 See docs/WIKI_PROTOCOL.md for complete wiki maintenance protocol.
@@ -57,12 +62,9 @@ Compressed rules are in §5 below.
 
 Copy the compressed version from [Section 12 of WIKI_PROTOCOL.md](./WIKI_PROTOCOL.md#12-compressed-version-for-claudemd-embedding-250-tokens) directly into your `CLAUDE.md`. This gives agents the 7 mandatory rules without loading the full protocol every session.
 
-### Option C: Use Task-Specific Prompts
+### Option C: Use as a Claude Code Skill
 
-Copy individual sections as needed:
-- **Building a wiki from scratch?** → Use [Section 10: Multi-Session Compilation](./WIKI_PROTOCOL.md#10-multi-session-compilation-initial-wiki-build)
-- **Setting up verification gates?** → Use [Section 8: Post-Task Verification Gate](./WIKI_PROTOCOL.md#8-post-task-verification-gate)
-- **Running a lint pass?** → Use [Section 3.3: Lint](./WIKI_PROTOCOL.md#33-lint-health-check)
+Copy `examples/claude-md-snippet.md` into your project's `.claude/` directory or reference it from `CLAUDE.md`.
 
 ---
 
@@ -206,6 +208,18 @@ These rules exist because agents violated them:
 4. **"The agent will remember to update the wiki"** — It won't. The verification gate (Section 8) forces it.
 5. **"One session can compile the whole wiki"** — It can't. Agents silently truncate or hallucinate coverage. 8 phases, hard stops.
 6. **"Contradictions should be resolved immediately"** — By the agent? No. Flag both positions, escalate to human.
+
+---
+
+## Related Searches
+
+- [Karpathy LLM Wiki Gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)
+- [Claude Code documentation](https://docs.anthropic.com/claude-code)
+- [Codex documentation](https://docs.codex.io)
+- [Cursor documentation](https://cursor.com/docs)
+- AI agent memory systems
+- LLM context optimization
+- Knowledge base maintenance for AI agents
 
 ---
 
